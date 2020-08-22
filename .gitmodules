@@ -1,0 +1,3 @@
+[submodule "nyxt-browser"]
+	path = nyxt-browser
+	url = https://aur.archlinux.org/nyxt-browser.git
