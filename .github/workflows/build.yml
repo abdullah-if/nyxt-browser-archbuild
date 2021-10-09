@@ -31,19 +31,19 @@ jobs:
         run: sed -i '/^PKGDEST=/ d' /etc/makepkg.conf
 
       - name: Fetch pkgname
-        working-directory: nyxt-browser
+        working-directory: pagraphcontrol-git
         run: |
           source ./PKGBUILD
           echo "PKGNAME=${pkgname}" >> $GITHUB_ENV
 
       - name: Build package
-        working-directory: nyxt-browser
+        working-directory: pagraphcontrol-git
         run: |
           chown -R builder .
           sudo -u builder bash -c 'makepkg --syncdeps --needed --noconfirm'
 
       - name: Tar package
-        working-directory: nyxt-browser
+        working-directory: pagraphcontrol-git
         run: tar -czvf ${{ env.PKGNAME }}.tar.gz ${{ env.PKGNAME }}-*.pkg.tar.*
 
       - uses: actions/upload-artifact@v2
